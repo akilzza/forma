@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Форма — студия красоты в Петергофе</title>
+<meta name="description" content="Студия красоты «Форма» в Петергофе: женские, мужские и детские стрижки, окрашивание, маникюр и педикюр, брови, подолог. Ежедневно 10:00–20:00. Рейтинг 5,0 на Яндекс Картах.">
+<!-- Пробная версия для показа клиенту: не показывать в поисковиках. Убрать, когда сайт станет официальным -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Карточка ссылки в WhatsApp/Telegram/VK. Адрес картинки должен быть полным; поменять, если сайт переедет -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Форма — студия красоты в Петергофе">
+<meta property="og:description" content="Стрижки, окрашивание, маникюр, брови и подолог. Ежедневно 10:00–20:00. ★ 5,0 на Яндекс Картах.">
+<meta property="og:image" content="https://akilzza.github.io/forma/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://akilzza.github.io/forma/">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23545456'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='38' fill='%23fff' text-anchor='middle'%3E%D0%A4%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root {
+  --bg: #f6f3ef;
+  --bg-2: #ede8e1;
+  --card: #fffdfa;
+  --line: #ddd6cc;
+  --graphite: #545456;
+  --ink: #2e2e30;
+  --text: #4b4a4c;
+  --muted: #8a847c;
+  --rose: #a9786a;
+  --radius: 16px;
+  --wrap: 1180px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.65 "Manrope", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; color: var(--ink); font-weight: 600; line-height: 1.05; }
+h2 { font-size: clamp(38px, 5.4vw, 60px); }
+h2 em { font-style: italic; font-weight: 500; color: var(--rose); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--rose);
+}
+.eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+.script { font-family: "Marck Script", cursive; font-weight: 400; }
+section { padding: 110px 0; }
+
+/* кнопки */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 30px; border-radius: 999px; font-weight: 700; font-size: 16px;
+  transition: transform .2s, background .2s, color .2s, border-color .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-main { background: var(--graphite); color: #fff; }
+.btn-main:hover { background: var(--ink); }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: var(--bg-2); }
+.btn-ghost { border: 1px solid #b9b1a6; color: var(--ink); }
+.btn-ghost:hover { border-color: var(--graphite); background: var(--graphite); color: #fff; }
+.btn-ghost-light { border: 1px solid rgba(255,255,255,.45); color: #fff; }
+.btn-ghost-light:hover { background: #fff; color: var(--ink); }
+
+/* логотип текстом: как на вывеске */
+.logo { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; }
+.logo b { font-family: "Manrope", sans-serif; font-weight: 600; letter-spacing: .14em; margin-right: -.14em; }
+.logo i { font-family: "Marck Script", cursive; font-style: normal; margin-top: -.15em; }
+
+/* шапка */
+header {
+  position: fixed; inset: 0 0 auto; z-index: 50; color: #fff;
+  transition: background .3s, border-color .3s, color .3s;
+  border-bottom: 1px solid transparent;
+}
+header.scrolled, header.menu-open { background: rgba(246, 243, 239, .94); backdrop-filter: blur(10px); border-color: var(--line); color: var(--ink); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+.brand b { font-size: 24px; }
+.brand i { font-size: 17px; }
+.menu { display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 600; }
+.menu a:not(.btn) { opacity: .85; transition: opacity .2s, color .2s; }
+.menu a:not(.btn):hover { opacity: 1; color: var(--rose); }
+.menu .btn { padding: 11px 22px; font-size: 15px; }
+header:not(.scrolled) .menu .btn { background: #fff; color: var(--ink); }
+.burger { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; color: inherit; }
+.burger span { display: block; width: 24px; height: 2px; margin: 6px auto; background: currentColor; transition: transform .3s, opacity .3s; }
+
+/* первый экран */
+.hero { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; padding: 0; background: var(--graphite); color: #fff; }
+.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 140px 56px 80px max(24px, calc((100vw - var(--wrap)) / 2 + 24px)); }
+.hero .eyebrow { color: #e4cfc6; }
+.hero h1 { margin: 30px 0 26px; color: #fff; align-self: flex-start; }
+.hero h1 b { font-size: clamp(64px, 9vw, 116px); }
+.hero h1 i { font-size: clamp(34px, 4.6vw, 58px); }
+.hero p.lead { font-size: 19px; max-width: 500px; color: rgba(255,255,255,.82); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 38px 0 46px; }
+.badges { display: flex; flex-wrap: wrap; gap: 30px; }
+.badge { display: flex; align-items: center; gap: 12px; }
+.badge b { font-family: "Cormorant Garamond", serif; font-size: 40px; font-weight: 600; line-height: 1; }
+.badge small { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.35; }
+.stars { color: #e4cfc6; letter-spacing: 2px; }
+.hero-photo { position: relative; overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--graphite) 0%, rgba(84,84,86,0) 30%); }
+
+/* бегущая строка */
+.ticker { border-bottom: 1px solid var(--line); padding: 20px 0; overflow: hidden; white-space: nowrap; background: var(--bg-2); }
+.ticker div { display: inline-block; animation: run 45s linear infinite; }
+.ticker span { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 26px; color: var(--ink); margin: 0 26px; }
+.ticker i { color: var(--rose); font-style: normal; }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* заголовок раздела */
+.head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 56px; flex-wrap: wrap; }
+.head h2 { margin-top: 18px; }
+.head p { max-width: 400px; color: var(--muted); }
+
+/* направления */
+.dirs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.dir { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
+.dir:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(60, 50, 40, .1); }
+.dir img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.dir div { padding: 22px 22px 26px; }
+.dir h3 { font-size: 28px; margin-bottom: 8px; }
+.dir p { font-size: 15px; color: var(--muted); }
+
+/* о студии */
+.about-sec { background: var(--bg-2); border-block: 1px solid var(--line); }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about h2 { margin: 18px 0 26px; }
+.about p + p { margin-top: 16px; }
+.perks { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.perk { padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.perk b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
+.perk span { font-size: 14px; color: var(--muted); }
+.about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.about-photos img { border-radius: var(--radius); width: 100%; height: 100%; object-fit: cover; }
+.about-photos img:first-child { grid-column: span 2; aspect-ratio: 4 / 3; }
+.about-photos img:not(:first-child) { aspect-ratio: 3 / 4; }
+
+/* цены */
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+.tab { font: 600 15px "Manrope", sans-serif; padding: 12px 22px; border-radius: 999px; border: 1px solid #b9b1a6; background: transparent; color: var(--ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.tab:hover { border-color: var(--graphite); }
+.tab.active { background: var(--graphite); border-color: var(--graphite); color: #fff; }
+.panel { display: none; grid-template-columns: 1fr 1fr; gap: 0 64px; }
+.panel.active { display: grid; animation: fade .4s; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } }
+.price { display: flex; align-items: baseline; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.price b { font-family: "Cormorant Garamond", serif; font-size: 23px; font-weight: 600; color: var(--ink); }
+.price-dots { flex: 1; border-bottom: 1px dotted #b9b1a6; transform: translateY(-6px); min-width: 20px; }
+.price-sum { font-family: "Cormorant Garamond", serif; font-size: 24px; font-weight: 600; color: var(--rose); white-space: nowrap; }
+.price-sum small { font-family: "Manrope", sans-serif; font-size: 14px; color: var(--muted); margin-right: 4px; font-weight: 400; }
+.more { margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding: 28px 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.more p { color: var(--muted); max-width: 660px; }
+.more p b { color: var(--ink); font-weight: 600; }
+
+/* мастера */
+.team-sec { background: var(--bg-2); border-block: 1px solid var(--line); }
+.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.master { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; }
+.master .ava { width: 58px; height: 58px; border-radius: 50%; background: var(--graphite); color: #fff; display: grid; place-items: center; font-family: "Marck Script", cursive; font-size: 30px; margin-bottom: 16px; }
+.master h3 { font-size: 27px; }
+.master .role { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--rose); margin: 4px 0 14px; }
+.master q { quotes: none; font-size: 15px; color: var(--muted); font-style: italic; flex: 1; }
+.master q::before { content: "«"; } .master q::after { content: "»"; }
+
+/* работы */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 270px; grid-auto-flow: dense; gap: 16px; }
+.gallery figure { position: relative; overflow: hidden; border-radius: var(--radius); cursor: zoom-in; background: var(--bg-2); }
+.gallery figure.tall { grid-row: span 2; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.gallery figure:hover img { transform: scale(1.05); }
+.gallery figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 16px;
+  background: linear-gradient(transparent, rgba(30,30,32,.7)); color: #fff; font-size: 14px; font-weight: 600;
+}
+
+/* бутик */
+.boutique { display: grid; grid-template-columns: .8fr 1.2fr; border-radius: 24px; overflow: hidden; background: var(--graphite); color: #fff; }
+.boutique img { width: 100%; height: 100%; object-fit: cover; min-height: 440px; max-height: 560px; }
+.boutique-text { padding: 64px; display: flex; flex-direction: column; justify-content: center; }
+.boutique-text .eyebrow { color: #e4cfc6; }
+.boutique-text h2 { color: #fff; margin: 18px 0 20px; font-size: clamp(34px, 4.4vw, 52px); }
+.boutique-text h2 em { color: #e4cfc6; }
+.boutique-text p { color: rgba(255,255,255,.8); margin-bottom: 30px; max-width: 520px; }
+.boutique-text .btn { align-self: flex-start; }
+
+/* отзывы */
+.reviews { background: var(--bg-2); border-block: 1px solid var(--line); }
+.rating-box { display: flex; align-items: center; gap: 22px; }
+.rating-box b { font-family: "Cormorant Garamond", serif; font-size: 72px; font-weight: 600; color: var(--ink); line-height: 1; }
+.rating-box .stars { color: var(--rose); }
+.rating-box small { display: block; color: var(--muted); font-size: 14px; }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review { padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); display: flex; flex-direction: column; }
+.review q { quotes: none; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 21px; line-height: 1.45; color: var(--ink); flex: 1; }
+.review q::before { content: "“"; display: block; font-size: 64px; line-height: .6; color: var(--rose); margin-bottom: 10px; font-style: normal; }
+.review footer { margin-top: 22px; display: flex; justify-content: space-between; gap: 10px; font-size: 14px; color: var(--muted); }
+.review footer b { color: var(--text); font-weight: 600; }
+.reviews-link { margin-top: 40px; text-align: center; }
+
+/* контакты */
+.contacts { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: stretch; }
+.contacts h2 { margin: 18px 0 34px; }
+.contact-row { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.contact-row small { display: block; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--rose); font-weight: 700; margin-bottom: 4px; }
+.contact-row a, .contact-row p { font-size: 20px; color: var(--ink); }
+.contact-row a:hover { color: var(--rose); }
+.socials { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+.socials a { padding: 11px 20px; border: 1px solid #b9b1a6; border-radius: 999px; font-size: 15px; font-weight: 600; color: var(--ink); transition: background .2s, color .2s, border-color .2s; }
+.socials a:hover { background: var(--graphite); border-color: var(--graphite); color: #fff; }
+.map { border-radius: 24px; overflow: hidden; border: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; }
+.map > img { width: 100%; flex: 1; min-height: 300px; max-height: 440px; object-fit: cover; object-position: center 60%; }
+.map-card { padding: 30px 32px 32px; }
+.map-card b { font-family: "Cormorant Garamond", serif; font-size: 32px; color: var(--ink); font-weight: 600; }
+.map-card p { margin: 8px 0 22px; max-width: 460px; color: var(--muted); }
+.map-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.map-actions .btn { padding: 13px 22px; font-size: 15px; }
+
+/* подвал */
+.final { text-align: center; padding: 120px 0; background: var(--graphite); color: #fff; }
+.final .logo { margin-bottom: 30px; }
+.final .logo b { font-size: 54px; }
+.final .logo i { font-size: 34px; }
+.final h2 { color: #fff; margin-bottom: 18px; }
+.final p { color: rgba(255,255,255,.75); margin-bottom: 36px; }
+footer.site { padding: 30px 0; font-size: 14px; color: var(--muted); }
+footer.site .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+/* кнопка записи внизу на телефоне */
+.sticky-cta { display: none; }
+
+/* просмотр фото */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(20,20,22,.92); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-height: 90vh; border-radius: 10px; }
+
+/* появление при прокрутке */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s, transform .8s; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 1080px) {
+  .dirs, .team { grid-template-columns: 1fr 1fr; }
+  .review-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 980px) {
+  section { padding: 80px 0; }
+  .menu { position: fixed; inset: 78px 0 auto; flex-direction: column; gap: 0; background: var(--bg); color: var(--ink); border-bottom: 1px solid var(--line); padding: 10px 24px 24px; transform: translateY(-120%); transition: transform .35s; z-index: -1; }
+  .menu.open { transform: none; }
+  .menu a:not(.btn) { padding: 16px 0; width: 100%; border-bottom: 1px solid var(--line); font-size: 18px; }
+  .menu .btn, header:not(.scrolled) .menu .btn { margin-top: 20px; width: 100%; padding: 16px; background: var(--graphite); color: #fff; }
+  .burger { display: block; }
+  header.menu-open .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  header.menu-open .burger span:nth-child(2) { opacity: 0; }
+  header.menu-open .burger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .hero { grid-template-columns: 1fr; position: relative; }
+  .hero-photo { position: absolute; inset: 0; }
+  .hero-photo::after { background: linear-gradient(180deg, rgba(84,84,86,.6) 0%, rgba(84,84,86,.82) 50%, var(--graphite) 100%); }
+  .hero-text { position: relative; z-index: 1; padding: 130px 24px 60px; }
+  .about, .contacts, .boutique { grid-template-columns: 1fr; gap: 50px; }
+  .boutique { gap: 0; }
+  .boutique img { min-height: 300px; max-height: 380px; }
+  .boutique-text { padding: 40px 28px; }
+  .panel { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+  .map > img { min-height: 260px; max-height: 340px; }
+  .map-card { padding: 24px; }
+  .map-actions .btn { flex: 1 1 100%; }
+  .sticky-cta { display: block; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 40; transform: translateY(150%); transition: transform .3s; }
+  .sticky-cta.show { transform: none; }
+  .sticky-cta .btn { width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+  footer.site { padding-bottom: 100px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .hero-text { padding-left: 16px; padding-right: 16px; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .badges { gap: 20px; }
+  .dirs { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dir div { padding: 16px; }
+  .dir h3 { font-size: 22px; }
+  .dir p { font-size: 13px; }
+  .team, .review-grid { grid-template-columns: 1fr; }
+  .perks { gap: 10px; }
+  .perk { padding: 16px; }
+  .perk span { font-size: 13px; }
+  .tab { padding: 10px 16px; font-size: 14px; }
+  .price b { font-size: 20px; }
+  .price-sum { font-size: 21px; }
+  .gallery { grid-auto-rows: 170px; gap: 10px; }
+  .review { padding: 26px; }
+  .review q { font-size: 19px; }
+  .more { padding: 22px; }
+  .final .logo b { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker div { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo brand" aria-label="Форма, студия красоты"><b>ФОРМА</b><i>студия красоты</i></a>
+    <nav class="menu" id="menu">
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#team">Мастера</a>
+      <a href="#works">Работы</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <a class="btn btn-main" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Записаться</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Петергоф · Бобыльская дорога, 61</span>
+    <h1 class="logo"><b>ФОРМА</b><i>студия красоты</i></h1>
+    <p class="lead">Стрижки и окрашивание, маникюр и педикюр, брови и подолог — всё в одном месте. Мастера, к которым ходят годами, и чашка кофе, пока вы преображаетесь.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Записаться онлайн</a>
+      <a class="btn btn-ghost-light" href="tel:+79119205066">+7 (911) 920-50-66</a>
+    </div>
+    <div class="badges">
+      <div class="badge"><b>5,0</b><small><span class="stars">★★★★★</span><br>479 оценок на Яндексе</small></div>
+      <div class="badge"><b>292</b><small>отзыва<br>от гостей</small></div>
+      <div class="badge"><b>10–20</b><small>открыты<br>ежедневно</small></div>
+    </div>
+  </div>
+  <div class="hero-photo"><img src="img/work-bob.jpg" alt="Стрижка-боб и окрашивание в студии «Форма»"></div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div>
+    <span>Стрижки <i>✦</i></span><span>Окрашивание <i>✦</i></span><span>Укладки <i>✦</i></span><span>Химическая завивка <i>✦</i></span><span>Маникюр <i>✦</i></span><span>Педикюр <i>✦</i></span><span>Брови <i>✦</i></span><span>Подолог <i>✦</i></span><span>Детские стрижки <i>✦</i></span>
+    <span>Стрижки <i>✦</i></span><span>Окрашивание <i>✦</i></span><span>Укладки <i>✦</i></span><span>Химическая завивка <i>✦</i></span><span>Маникюр <i>✦</i></span><span>Педикюр <i>✦</i></span><span>Брови <i>✦</i></span><span>Подолог <i>✦</i></span><span>Детские стрижки <i>✦</i></span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Направления</span><h2>Всё для красоты — <em>рядом с домом</em></h2></div>
+      <p>Можно совместить процедуры: пока идёт окрашивание, мастер оформит брови.</p>
+    </div>
+    <div class="dirs reveal">
+      <article class="dir"><img src="img/work-blond.jpg" alt="Окрашивание в блонд и укладка" loading="lazy"><div><h3>Женский зал</h3><p>Стрижки, окрашивание, мелирование, тотал-блонд, укладки и химическая завивка</p></div></article>
+      <article class="dir"><img src="img/work-men.jpg" alt="Мужская стрижка" loading="lazy"><div><h3>Мужской зал</h3><p>Модельные стрижки, канадка, борода и камуфляж седины. Стрижём и детей</p></div></article>
+      <article class="dir"><img src="img/nails-blue.jpg" alt="Маникюр с покрытием гель-лаком" loading="lazy"><div><h3>Ногтевой сервис</h3><p>Маникюр и педикюр с покрытием и без, женский и мужской</p></div></article>
+      <article class="dir"><img src="img/podology.jpg" alt="Кабинет подолога" loading="lazy"><div><h3>Брови и подолог</h3><p>Архитектура и окрашивание бровей, ресницы. Подолог поможет со здоровьем стоп</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="about-sec">
+  <div class="wrap about">
+    <div class="reveal">
+      <span class="eyebrow">О студии</span>
+      <h2>Место, где вас <em>слышат</em></h2>
+      <p>«Форма» — уютная студия красоты в Старом Петергофе. Здесь нет конвейера: мастер сначала выслушает, подскажет, что подойдёт именно вам, и расскажет, как ухаживать за волосами дома.</p>
+      <p>Мастера регулярно учатся новым техникам стрижки и окрашивания, а цены остаются доступнее, чем в центре города. Многие гости ходят к нам не первый год — и приводят детей.</p>
+      <div class="perks">
+        <div class="perk"><b>Кофе и чай</b><span>Предложим, пока вы ждёте</span></div>
+        <div class="perk"><b>Онлайн-запись</b><span>И напоминание о визите</span></div>
+        <div class="perk"><b>Подарочные сертификаты</b><span>Красота — лучший подарок</span></div>
+        <div class="perk"><b>Можно с собакой</b><span>Четвероногим тоже рады</span></div>
+      </div>
+    </div>
+    <div class="about-photos reveal">
+      <img src="img/hall.jpg" alt="Зал студии «Форма»" loading="lazy">
+      <img src="img/hall-2.jpg" alt="Рабочие места мастеров" loading="lazy">
+      <img src="img/coffee.jpg" alt="Кофе для гостей" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Цены взяты из 2ГИС (02.11.2026) и могут быть устаревшими — сверить со студией перед запуском -->
+<section id="prices">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Прайс</span><h2>Услуги и цены</h2></div>
+      <p>Точную стоимость подскажет администратор: она зависит от длины и густоты волос.</p>
+    </div>
+    <div class="reveal">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="women">Женский зал</button>
+        <button class="tab" data-tab="men">Мужской зал</button>
+        <button class="tab" data-tab="nails">Маникюр и педикюр</button>
+        <button class="tab" data-tab="brows">Брови и ресницы</button>
+      </div>
+      <div class="panel active" id="women">
+        <div class="price"><b>Стрижка короткая</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 100 ₽</div></div>
+        <div class="price"><b>Стрижка средняя</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 300 ₽</div></div>
+        <div class="price"><b>Стрижка длинная</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 400 ₽</div></div>
+        <div class="price"><b>Окрашивание в один тон</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 300 ₽</div></div>
+        <div class="price"><b>Мелирование на шапочке</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 000 ₽</div></div>
+        <div class="price"><b>Мелирование на фольге</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 400 ₽</div></div>
+        <div class="price"><b>Total Blond</b><div class="price-dots"></div><div class="price-sum"><small>от</small>2 500 ₽</div></div>
+        <div class="price"><b>Окрашивание в яркие оттенки</b><div class="price-dots"></div><div class="price-sum"><small>от</small>3 000 ₽</div></div>
+        <div class="price"><b>Творческие техники</b><div class="price-dots"></div><div class="price-sum"><small>от</small>3 500 ₽</div></div>
+      </div>
+      <div class="panel" id="men">
+        <div class="price"><b>Модельная стрижка</b><div class="price-dots"></div><div class="price-sum"><small>от</small>900 ₽</div></div>
+        <div class="price"><b>Канадка</b><div class="price-dots"></div><div class="price-sum"><small>от</small>800 ₽</div></div>
+        <div class="price"><b>Спортивная</b><div class="price-dots"></div><div class="price-sum">600 ₽</div></div>
+        <div class="price"><b>Под одну насадку</b><div class="price-dots"></div><div class="price-sum">400 ₽</div></div>
+        <div class="price"><b>Стрижка бороды</b><div class="price-dots"></div><div class="price-sum">500 ₽</div></div>
+        <div class="price"><b>Камуфляж седины</b><div class="price-dots"></div><div class="price-sum">500 ₽</div></div>
+      </div>
+      <div class="panel" id="nails">
+        <div class="price"><b>Маникюр без покрытия</b><div class="price-dots"></div><div class="price-sum">900 ₽</div></div>
+        <div class="price"><b>Маникюр + гель-лак</b><div class="price-dots"></div><div class="price-sum"><small>от</small>1 900 ₽</div></div>
+        <div class="price"><b>Маникюр + френч гель-лак</b><div class="price-dots"></div><div class="price-sum"><small>от</small>2 500 ₽</div></div>
+        <div class="price"><b>Мужской маникюр</b><div class="price-dots"></div><div class="price-sum">1 000 ₽</div></div>
+        <div class="price"><b>Педикюр smart без покрытия</b><div class="price-dots"></div><div class="price-sum">1 900 ₽</div></div>
+        <div class="price"><b>Педикюр smart + гель-лак</b><div class="price-dots"></div><div class="price-sum">2 500 ₽</div></div>
+        <div class="price"><b>Мужской педикюр</b><div class="price-dots"></div><div class="price-sum">2 000 ₽</div></div>
+      </div>
+      <div class="panel" id="brows">
+        <div class="price"><b>Архитектура бровей</b><div class="price-dots"></div><div class="price-sum">1 500 ₽</div></div>
+        <div class="price"><b>Коррекция бровей</b><div class="price-dots"></div><div class="price-sum">800 ₽</div></div>
+        <div class="price"><b>Окрашивание бровей</b><div class="price-dots"></div><div class="price-sum">800 ₽</div></div>
+        <div class="price"><b>Окрашивание ресниц</b><div class="price-dots"></div><div class="price-sum">800 ₽</div></div>
+        <div class="price"><b>Долговременная укладка + коррекция + окрашивание</b><div class="price-dots"></div><div class="price-sum">2 000 ₽</div></div>
+        <div class="price"><b>Депиляция воском, одна зона лица</b><div class="price-dots"></div><div class="price-sum">500 ₽</div></div>
+      </div>
+    </div>
+    <div class="more reveal">
+      <p>Также делаем <b>укладки и вечерние причёски</b>, <b>химическую и био-завивку</b>, <b>кератиновое выпрямление</b>, <b>детские стрижки</b> и <b>приём подолога</b>.</p>
+      <a class="btn btn-main" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Выбрать время</a>
+    </div>
+  </div>
+</section>
+
+<!-- Мастера и их направления взяты из отзывов на Яндекс Картах — сверить состав со студией, добавить фото -->
+<section class="team-sec" id="team">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Команда</span><h2>Наши мастера</h2></div>
+      <p>Каждый найдёт «свою руку» — гости в отзывах благодарят мастеров по именам.</p>
+    </div>
+    <div class="team reveal">
+      <article class="master"><div class="ava">С</div><h3>Светлана</h3><div class="role">Стрижки</div><q>Понимает с полуслова, своё видение не навязывает, но если колеблешься — предложит варианты</q></article>
+      <article class="master"><div class="ava">П</div><h3>Полина</h3><div class="role">Колорист</div><q>Внимательно выслушала мои пожелания и предложила оттенок, который действительно подошёл</q></article>
+      <article class="master"><div class="ava">О</div><h3>Оксана</h3><div class="role">Стрижки и укладки</div><q>Накрутила локоны и уложила в причёску. Коллеги оценили её как прекрасную</q></article>
+      <article class="master"><div class="ava">Т</div><h3>Татьяна</h3><div class="role">Стрижки и завивка</div><q>Ребёнок вышел довольный и красивый, сказал, что будет стричься только у Татьяны</q></article>
+      <article class="master"><div class="ava">К</div><h3>Кристина</h3><div class="role">Мужские стрижки</div><q>Позитивная, внимательная — выслушала, добавила что-то профессиональное, и работа закипела</q></article>
+      <article class="master"><div class="ava">Н</div><h3>Надежда</h3><div class="role">Маникюр</div><q>Помогла подобрать тон лака. И быстро, за один час!</q></article>
+      <article class="master"><div class="ava">М</div><h3>Маргарита</h3><div class="role">Брови</div><q>Пока шло окрашивание, оформила брови. Очень удобно совместить процедуры</q></article>
+      <article class="master"><div class="ava">Е</div><h3>Елена Алексеевна</h3><div class="role">Подолог</div><q>Записалась на приём, и в этот же день мне помогли</q></article>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Портфолио</span><h2>Наши <em>работы</em></h2></div>
+      <p>Живые фото гостей студии — без фильтров и стоковых картинок.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure class="tall"><img src="img/work-curls.jpg" alt="Кудри после завивки" loading="lazy"><figcaption>Завивка и уход за кудрями</figcaption></figure>
+      <figure><img src="img/work-short.jpg" alt="Короткое каре с мелированием" loading="lazy"><figcaption>Каре с мелированием</figcaption></figure>
+      <figure><img src="img/work-blue.jpg" alt="Яркое окрашивание прядей" loading="lazy"><figcaption>Яркие пряди</figcaption></figure>
+      <figure class="tall"><img src="img/work-copper.jpg" alt="Медное окрашивание и локоны" loading="lazy"><figcaption>Медный оттенок</figcaption></figure>
+      <figure><img src="img/nails-art.jpg" alt="Маникюр с дизайном" loading="lazy"><figcaption>Маникюр с дизайном</figcaption></figure>
+      <figure><img src="img/work-updo.jpg" alt="Вечерняя причёска" loading="lazy"><figcaption>Вечерняя причёска</figcaption></figure>
+      <figure><img src="img/work-men-2.jpg" alt="Мужская стрижка с переходом" loading="lazy"><figcaption>Мужская стрижка</figcaption></figure>
+      <figure><img src="img/work-pixie.jpg" alt="Короткая женская стрижка" loading="lazy"><figcaption>Короткая стрижка</figcaption></figure>
+      <figure><img src="img/nails-red.jpg" alt="Красный маникюр с дизайном" loading="lazy"><figcaption>Маникюр гель-лаком</figcaption></figure>
+      <figure><img src="img/work-bob-2.jpg" alt="Удлинённое каре в светлых тонах" loading="lazy"><figcaption>Каре и тонирование</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0">
+  <div class="wrap">
+    <div class="boutique reveal">
+      <img src="img/boutique.jpg" alt="Витрина профессиональной косметики Estel" loading="lazy">
+      <div class="boutique-text">
+        <span class="eyebrow">Бутик косметики</span>
+        <h2>Салонный уход — <em>теперь и&nbsp;дома</em></h2>
+        <p>В студии есть витрина профессиональной косметики для волос. Мастер подскажет, что подойдёт именно вашим волосам, — а купить можно сразу после визита.</p>
+        <a class="btn btn-light" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Записаться на консультацию</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><span class="eyebrow">Отзывы</span><h2>Что говорят гости</h2></div>
+      <div class="rating-box"><b>5,0</b><div><span class="stars">★★★★★</span><small>479 оценок и 292 отзыва<br>на Яндекс Картах</small></div></div>
+    </div>
+    <div class="review-grid reveal">
+      <article class="review">
+        <q>Хожу в эту парикмахерскую больше 15 лет и ей не изменяю. Хорошие творческие мастера. Сама парикмахерская всё время развивается, меняется интерьер, появляются новые услуги.</q>
+        <footer><b>Anela</b><span>Яндекс Карты</span></footer>
+      </article>
+      <article class="review">
+        <q>Мастер Полина сразу поняла, что мне нужно, и сделала всё чётко: ровно, аккуратно, без лишней суеты. Однозначно буду ходить сюда и дальше!</q>
+        <footer><b>Катюша</b><span>Яндекс Карты</span></footer>
+      </article>
+      <article class="review">
+        <q>Лучшая парикмахерская Старого Петергофа по эту сторону ж/д! Подстригли красиво, спасибо. Цены ниже, чем в других салонах красоты, стильный интерьер.</q>
+        <footer><b>Igor Morozov</b><span>Яндекс Карты</span></footer>
+      </article>
+      <article class="review">
+        <q>Мастер Светлана сразу поняла, чего я хочу, внимательно выслушала все пожелания и дала полезные советы. Причёска держит форму, нет «летающих» прядей.</q>
+        <footer><b>Ольга</b><span>Яндекс Карты</span></footer>
+      </article>
+      <article class="review">
+        <q>Хожу не первый год к Светлане и подологу Елене. Специалисты высочайшего класса. Посещение этого салона — это праздник красоты и комфорта.</q>
+        <footer><b>Ирина Мусатова</b><span>Яндекс Карты</span></footer>
+      </article>
+      <article class="review">
+        <q>Очень уютная парикмахерская, вежливый персонал. Водила сына на детскую стрижку, он очень доволен. Подстригли быстро и красиво, даже фигурные выстриги сделали, как он хотел.</q>
+        <footer><b>Анастасия Шеховцова</b><span>Яндекс Карты</span></footer>
+      </article>
+    </div>
+    <div class="reviews-link"><a class="btn btn-ghost" href="https://yandex.ru/maps/org/forma/1131885622/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a></div>
+  </div>
+</section>
+
+<!-- Телефон и WhatsApp — из 2ГИС и Яндекса; на Яндексе указан ещё номер +7 911 706-00-66 — уточнить у студии, какой главный -->
+<section id="contacts">
+  <div class="wrap contacts">
+    <div class="reveal">
+      <span class="eyebrow">Контакты</span>
+      <h2>Ждём вас в гости</h2>
+      <div class="contact-row"><small>Адрес</small><p>Петергоф, Бобыльская дорога, 61, цокольный этаж</p></div>
+      <div class="contact-row"><small>Часы работы</small><p>Ежедневно с 10:00 до 20:00</p></div>
+      <div class="contact-row"><small>Телефон и WhatsApp</small><a href="tel:+79119205066">+7 (911) 920-50-66</a></div>
+      <div class="socials">
+        <a href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Онлайн-запись</a>
+        <a href="https://wa.me/79119205066" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://t.me/+79119205066" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/studiaforma" target="_blank" rel="noopener">ВКонтакте</a>
+      </div>
+    </div>
+    <div class="map reveal">
+      <img src="img/workplace.jpg" alt="Рабочее место мастера в студии «Форма»" loading="lazy">
+      <div class="map-card">
+        <b>Как нас найти</b>
+        <p>Старый Петергоф, Бобыльская дорога, 61. Студия находится в цокольном этаже здания.</p>
+        <div class="map-actions">
+          <a class="btn btn-main" href="https://yandex.ru/maps/?rtext=~59.88746%2C29.861822&rtt=auto" target="_blank" rel="noopener">Построить маршрут</a>
+          <a class="btn btn-ghost" href="https://yandex.ru/maps/org/forma/1131885622/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="logo"><b>ФОРМА</b><i>студия красоты</i></div>
+    <h2>Время для себя</h2>
+    <p>Выберите мастера и удобное время онлайн — это займёт минуту.</p>
+    <a class="btn btn-light" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Записаться онлайн</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Студия красоты «Форма», Петергоф</span>
+    <span>Пробная версия сайта · сделано akilzza</span>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky"><a class="btn btn-main" href="https://n823170.yclients.ru/" target="_blank" rel="noopener">Записаться онлайн</a></div>
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<script>
+const header = document.querySelector("header");
+const sticky = document.getElementById("sticky");
+const onScroll = () => {
+  header.classList.toggle("scrolled", scrollY > 40);
+  sticky.classList.toggle("show", scrollY > innerHeight * 0.8);
+};
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+const menu = document.getElementById("menu");
+document.getElementById("burger").addEventListener("click", () => {
+  menu.classList.toggle("open");
+  header.classList.toggle("menu-open");
+});
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  menu.classList.remove("open");
+  header.classList.remove("menu-open");
+}));
+
+document.querySelectorAll(".tab").forEach(tab => tab.addEventListener("click", () => {
+  document.querySelectorAll(".tab, .panel").forEach(el => el.classList.remove("active"));
+  tab.classList.add("active");
+  document.getElementById(tab.dataset.tab).classList.add("active");
+}));
+
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+const lb = document.getElementById("lightbox");
+document.querySelectorAll(".gallery img").forEach(img => img.addEventListener("click", () => {
+  lb.querySelector("img").src = img.src;
+  lb.classList.add("open");
+}));
+lb.addEventListener("click", () => lb.classList.remove("open"));
+</script>
+</body>
+</html>
